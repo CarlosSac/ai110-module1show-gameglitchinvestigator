@@ -1,3 +1,16 @@
+#FIXED: Moved check_guess out of app.py, fixed swapped high/low hints, and removed string casting of secret in app.py using claude.
+def check_guess(guess, secret):
+    """
+    Compare guess to secret and return (outcome, message).
+    outcome examples: "Win", "Too High", "Too Low"
+    """
+    if guess == secret:
+        return "Win", "🎉 Correct!"
+    if guess > secret:
+        return "Too High", "📉 Go LOWER!"
+    return "Too Low", "📈 Go HIGHER!"
+
+
 def get_range_for_difficulty(difficulty: str):
     """Return (low, high) inclusive range for a given difficulty."""
     raise NotImplementedError("Refactor this function from app.py into logic_utils.py")
@@ -12,6 +25,7 @@ def parse_guess(raw: str):
     raise NotImplementedError("Refactor this function from app.py into logic_utils.py")
 
 
+#FIXED: Moved check_guess out of app.py, fixed swapped high/low hints, and removed string casting of secret in app.py.
 def check_guess(guess, secret):
     """
     Compare guess to secret and return (outcome, message).
