@@ -56,7 +56,12 @@ It wrote the code, ran away, and now the game is unplayable.
 - [x] Explain what fixes you applied.
 
 ## 📸 Demo
+<img src='demo/demo_win.jpeg' title='Video Walkthrough' width='500' alt='Video Walkthrough' />
+<img src='demo/demo.gif' title='Video Walkthrough' width='500' alt='Video Walkthrough' />
 
+### Tests
+
+<img src='demo/tests.png' title='Video Walkthrough' width='500' alt='Video Walkthrough' />
 
 ## 🚀 Stretch Features
 
