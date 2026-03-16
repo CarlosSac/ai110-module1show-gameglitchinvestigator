@@ -6,15 +6,16 @@ Answer each question in 3 to 5 sentences. Be specific and honest about what actu
 
 - What did the game look like the first time you ran it?
 - List at least two concrete bugs you noticed at the start
-  [x] When guess is too high like 99, expected hint "Go LOWER" but got "Go HIGHER."
-    - When starting a new game, expected history to reset but previous guesses were kept
-    - After winning, expected to be able to start a new game but the button did not work
-    - When starting a new game, expected attempt count to reset to 0 but it kept the previous count
-    - When entering a number outside 1–100, expected an error or rejection but any number was accepted
-    - On the first attempt, expected the guess to appear in history but it was not recorded
-    - On Normal difficulty, expected the same or more attempts than Easy but Normal gives 7 and Easy gives 5 (should be the other way around)
-      [x] On Hard difficulty, expected a larger range than Normal to make it harder, but the range was 1-50 which is easier than Normal.
-      [x] The guess prompt always said "between 1 and 100" regardless of difficulty, expected the message to reflect the actual range
+  
+  - [x] When guess is too high like 99, expected hint "Go LOWER" but got "Go HIGHER."
+  - [ ] When starting a new game, expected history to reset but previous guesses were kept
+  - [ ] After winning, expected to be able to start a new game but the button did not work
+  - [ ] When starting a new game, expected attempt count to reset to 0 but it kept the previous count
+  - [ ] When entering a number outside 1–100, expected an error or rejection but any number was accepted
+  - [ ] On the first attempt, expected the guess to appear in history but it was not recorded
+  - [ ] On Normal difficulty, expected the same or more attempts than Easy but Normal gives 7 and Easy gives 5 (should be the other way around)
+  - [x] On Hard difficulty, expected a larger range than Normal to make it harder, but the range was 1-50 which is easier than Normal.
+  - [x] The guess prompt always said "between 1 and 100" regardless of difficulty, expected the message to reflect the actual range
 
 ---
 
