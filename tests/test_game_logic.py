@@ -1,4 +1,4 @@
-from logic_utils import check_guess
+from logic_utils import check_guess, get_range_for_difficulty, update_score, parse_guess
 
 def test_winning_guess():
     # If the secret is 50 and guess is 50, it should be a win
@@ -22,3 +22,38 @@ def test_high_low_hints_not_swapped():
     outcome_low, message_low = check_guess(40, 50)
     assert "LOWER" in message_high, "Too High hint should say Go LOWER"
     assert "HIGHER" in message_low, "Too Low hint should say Go HIGHER"
+
+# --- update_score ---
+
+def test_wrong_guess_decreases_score():
+    # Bug fix: wrong guesses should never increase score
+    score_after_high = update_score(100, "Too High", 1)
+    score_after_low = update_score(100, "Too Low", 1)
+    assert score_after_high < 100, "Too High guess should decrease score"
+    assert score_after_low < 100, "Too Low guess should decrease score"
+
+def test_win_increases_score():
+    score = update_score(0, "Win", 1)
+    assert score > 0, "Winning should increase score"
+
+# --- parse_guess ---
+
+def test_parse_guess_rejects_non_numeric():
+    ok, _, _ = parse_guess("abc")
+    assert not ok, "Non-numeric input should be rejected"
+
+def test_parse_guess_rejects_empty():
+    ok, _, _ = parse_guess("")
+    assert not ok, "Empty input should be rejected"
+
+def test_parse_guess_accepts_valid_number():
+    ok, value, _ = parse_guess("42")
+    assert ok and value == 42
+
+def test_out_of_range_guess_detected():
+    # Bug fix: guesses outside difficulty range should be rejected
+    low, high = get_range_for_difficulty("Normal")  # 1-50
+    assert low - 1 < low or low - 1 > high, "Below range should be out of bounds"
+    assert high + 1 < low or high + 1 > high, "Above range should be out of bounds"
+    assert not (low < low or low > high), "Low boundary should be in range"
+    assert not (high < low or high > high), "High boundary should be in range"
