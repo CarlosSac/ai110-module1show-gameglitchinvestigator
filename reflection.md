@@ -14,7 +14,8 @@ Answer each question in 3 to 5 sentences. Be specific and honest about what actu
         - #Fixed: New game now resets status to "playing", allowing a new game after a win or loss.
     - [x] When entering a number outside 1–100, expected an error or rejection but any number was accepted
         - #Fixed: Added range validation in app.py after parse_guess; shows an error if guess is outside the difficulty range.
-    - [ ] On the first attempt, expected the guess to appear in history but it was not recorded
+    - [x] After submitting the guess, expected the guess to appear in history immediately but it was not updated
+        - #Fixed: Moved the debug expander to after the submit block so history reflects the current guess on the same rerun.
     - [x] On Normal difficulty, expected the same or more attempts than Easy but Normal gives 7 and Easy gives 5 (should be the other way around)
         - #Fixed: Changed Easy attempts from 6 to 10 so Easy (10) > Normal (8) > Hard (5).
     - [x] On Hard difficulty, expected a larger range than Normal to make it harder, but the range was 1-50 which is easier than Normal.
