@@ -46,6 +46,18 @@ if "history" not in st.session_state:
 if "game_count" not in st.session_state:
     st.session_state.game_count = 0
 
+if "difficulty" not in st.session_state:
+    st.session_state.difficulty = difficulty
+
+if st.session_state.difficulty != difficulty:
+    st.session_state.difficulty = difficulty
+    st.session_state.secret = random.randint(low, high)
+    st.session_state.attempts = 0
+    st.session_state.history = []
+    st.session_state.status = "playing"
+    st.session_state.score = 0
+    st.session_state.game_count += 1
+
 st.subheader("Make a guess")
 
 #Fixed: Display correct range and attempts left based on difficulty settings.
