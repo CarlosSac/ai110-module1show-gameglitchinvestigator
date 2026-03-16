@@ -43,6 +43,9 @@ if "status" not in st.session_state:
 if "history" not in st.session_state:
     st.session_state.history = []
 
+if "game_count" not in st.session_state:
+    st.session_state.game_count = 0
+
 st.subheader("Make a guess")
 
 #Fixed: Display correct range and attempts left based on difficulty settings.
@@ -60,7 +63,7 @@ with st.expander("Developer Debug Info"):
 
 raw_guess = st.text_input(
     "Enter your guess:",
-    key=f"guess_input_{difficulty}"
+    key=f"guess_input_{difficulty}_{st.session_state.game_count}"
 )
 
 col1, col2, col3 = st.columns(3)
@@ -71,9 +74,14 @@ with col2:
 with col3:
     show_hint = st.checkbox("Show hint", value=True)
 
+#Fixed: Updated new game logic to reset all relevant session state variables and ensure the UI reflects the new game state immediately.
 if new_game:
     st.session_state.attempts = 0
-    st.session_state.secret = random.randint(1, 100)
+    st.session_state.secret = random.randint(low, high)
+    st.session_state.history = []
+    st.session_state.status = "playing"
+    st.session_state.score = 0
+    st.session_state.game_count += 1
     st.success("New game started.")
     st.rerun()
 
