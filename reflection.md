@@ -20,21 +20,25 @@ Answer each question in 3 to 5 sentences. Be specific and honest about what actu
 ## 2. How did you use AI as a teammate?
 
 - Which AI tools did you use on this project (for example: ChatGPT, Gemini, Copilot)?
-  Claude
+    - Claude
 
 - Give one example of an AI suggestion that was correct (including what the AI suggested and how you verified the result).
 
 - Give one example of an AI suggestion that was incorrect or misleading (including what the AI suggested and how you verified the result).
-  The AI fixed the high and lower problem but added a work around to the string-casting bug in the code instead or pointing out the bug or give possible solutions on the bug. The AI also remove everything from the logic utils when moving the logic to the file.
+    - The AI fixed the high and lower problem but added a work around to the string-casting bug in the code instead or pointing out the bug or give possible solutions on the bug. The AI also remove everything from the logic utils when moving the logic to the file.
 
 ---
 
 ## 3. Debugging and testing your fixes
 
 - How did you decide whether a bug was really fixed?
+  after testing on the web app and running the /tests
 - Describe at least one test you ran (manual or using pytest)  
   and what it showed you about your code.
+    - I ran pytest to called check_guess(60, 50) and check_guess(40, 50) and checked that the hint messages returned "LOWER" and "HIGHER" respectively. The test showed the swapped hints bug was fixed.
+    - The previous test were not working for me and had to fix them. I was returning a tuple and the test were only checking for a string.
 - Did AI help you design or understand any tests? How?
+    - AI help me to design the test to verify if the swapped bug was fixed and check the message text.
 
 ---
 
